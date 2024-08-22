@@ -59,12 +59,13 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerItens.cs" />
     <Compile Include="Assets\Scripts\Dialog\DialogueSettings.cs" />
+    <Compile Include="Assets\Scripts\Farm\SlotFarm.cs" />
     <Compile Include="Assets\Scripts\Dialog\NPC\NPC_Dialogue.cs" />
     <Compile Include="Assets\Scripts\Dialog\NPC\NPC.cs" />
     <Compile Include="Assets\Scripts\Craft\Tree.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\Drop Itens\Wood.cs" />
-    <Compile Include="Assets\Scripts\Farm\SlotFarm.cs" />
+    <Compile Include="Assets\Scripts\Farm\Water.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
