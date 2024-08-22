@@ -4,6 +4,13 @@ Projeto realizado no curso do Prof. Wenes Soares da "Crie seus Jogos" Start Game
 
 https://csjdigital.com.br/start-gamedev-fbads/
 
+## Linguagens utilizadas
+
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+
+## Engine
+
+![image](https://github.com/user-attachments/assets/fb71606f-e56e-4a62-b6d6-39cfd0319bb0)
 
 ## Sobre mim - Bruno Bricce (Braicce)
 
