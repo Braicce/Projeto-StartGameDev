@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float runSpeed = 3;
 
     private Rigidbody2D rig;
+    private PlayerItens playerItens;
 
     private float initialSpeed;
     private Vector2 _direction;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     private bool _isRolling;
     private bool _isCutting;
     private bool _isDigging;
+    private bool _isWatering;
 
     private int handlingObj;
 
@@ -49,11 +51,18 @@ public class Player : MonoBehaviour
         set { _isDigging = value; }
     }
 
+    public bool isWatering
+    {
+        get { return _isWatering; }
+        set { _isWatering = value; }
+    }
+
 
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         initialSpeed = speed;
+        playerItens = GetComponent<PlayerItens>();
     }
     private void Update()
     {
@@ -68,13 +77,19 @@ public class Player : MonoBehaviour
             handlingObj = 2;
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            handlingObj = 3;
+        }
+
         OnInput();
         OnRun();
         OnRolling();
         OnCutting();
         OnDigging();
+        OnWatering();
 
-     }
+    }
 
     private void FixedUpdate()
     {
@@ -127,13 +142,13 @@ public class Player : MonoBehaviour
     {
         if (handlingObj == 1)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetMouseButtonDown(0))
             {
                 speed = 0f;
                 _isCutting = true;
             }
 
-            if (Input.GetKeyUp(KeyCode.F))
+            if (Input.GetMouseButtonUp(0))
             {
                 speed = initialSpeed;
                 _isCutting = false;
@@ -146,17 +161,41 @@ public class Player : MonoBehaviour
     {
         if (handlingObj == 2)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetMouseButtonDown(0))
             {
                 speed = 0f;
                 _isDigging = true;
             }
 
-            if (Input.GetKeyUp(KeyCode.F))
+            if (Input.GetMouseButtonUp(0))
             {
                 speed = initialSpeed;
                 _isDigging = false;
 
+            }
+        }
+    }
+
+    void OnWatering()
+    {
+        if (handlingObj == 3)
+        {
+            if (Input.GetMouseButtonDown(0) && playerItens.currentWater > 0)
+            {                
+                speed = 0f;
+                _isWatering = true;
+            }
+
+            if (Input.GetMouseButtonUp(0) || playerItens.currentWater < 0)
+            {
+                speed = initialSpeed;
+                _isWatering = false;
+
+            }
+
+            if (isWatering)
+            {
+                playerItens.currentWater -= 0.01F;
             }
         }
     }
