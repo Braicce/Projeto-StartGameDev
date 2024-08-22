@@ -1,6 +1,6 @@
 # Projeto-StartGameDev
 
-Projeto realizado no curso Start GameDev (Todos direitos reservados) 
+Projeto realizado no curso do Prof. Wenes Soares da "Crie seus Jogos" Start GameDev (Todos direitos reservados) 
 
 https://csjdigital.com.br/start-gamedev-fbads/
 
