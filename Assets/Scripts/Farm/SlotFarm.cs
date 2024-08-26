@@ -4,18 +4,56 @@ using UnityEngine;
 
 public class SlotFarm : MonoBehaviour
 {
+    
+    [Header("Components")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite hole; 
     [SerializeField] private Sprite carrot;
 
+    [Header("Settings")]
     [SerializeField] private int digAmount; //qtd de cavar 
+    [SerializeField] private float waterAmount; //total de agua
+
+    [SerializeField] private bool detecting;
+
     private int initialDigAmount;
+    private float currentWater;
+
+    [SerializeField] private bool dugHole;
+
+    PlayerItens playerItens;
+
 
     private void Start()
     {
         initialDigAmount = digAmount;
+        playerItens = FindObjectOfType<PlayerItens>();
     }
 
+    private void Update()
+    {
+        if (dugHole)
+        {        
+            if(detecting)
+            {
+                currentWater += 0.01f;
+            }
+
+            //encheu total de agua necessario
+            if(currentWater >= waterAmount)
+            {
+                spriteRenderer.sprite = carrot;
+                
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    spriteRenderer.sprite = hole;
+                    playerItens.totalCarrots++;
+                    currentWater = 0f;
+                }
+            }
+        }
+        
+    }
 
     public void OnHit()
     {
@@ -23,20 +61,28 @@ public class SlotFarm : MonoBehaviour
         if (digAmount <= initialDigAmount / 2)
         {
             spriteRenderer.sprite = hole;
+            dugHole = true;
         }
-        
-        //if (digAmount <= 0)
-        //{
-            //plantar cenoura
-        //    spriteRenderer.sprite = carrot;
-        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("DIG"))
         {
-            OnHit();
+            OnHit();            
+        }
+
+        if (collision.CompareTag("WATER"))
+        {
+            detecting = true;
+        }              
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WATER"))
+        {
+            detecting = false;
         }
     }
 }
