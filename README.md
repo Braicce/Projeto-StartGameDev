@@ -18,7 +18,7 @@ Possuo Bacharelado em Ciência da Computação e Pós Graduação em Segurança 
 
  Tenho uma vasta experiência nas áreas de Segurança da Informação e Infraestrutura, totalizando 11 anos de carreira com foco nas áreas de gestão de acessos (IAM), integração e conscientização (Awareness), documentação/compliance (GRC) e analise de vulnerabilidades (Pentest).
 
-Atualmente, estou expandindo meus conhecimentos Desenvolvimento de Software, Red Team, Infraestrutura como Código (IaC), buscando sempre inovação e melhores práticas em cibersegurança.
+Atualmente, estou expandindo meus conhecimentos Desenvolvimento de Software e Games, Red Team, Infraestrutura como Código (IaC), buscando sempre inovação e melhores práticas em cibersegurança.
 
 Meu Hobby é jogar, colecionar e desenvolver games.
 
