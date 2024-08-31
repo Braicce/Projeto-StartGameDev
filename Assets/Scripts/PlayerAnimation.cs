@@ -7,11 +7,13 @@ public class PlayerAnimation : MonoBehaviour
 
     private Player player;
     private Animator anim;
+    private Fishing fishing;
 
     void Start()
     {
         player = GetComponent<Player>();
         anim = GetComponent<Animator>();
+        fishing = FindObjectOfType<Fishing>();
     }
 
    
@@ -20,8 +22,6 @@ public class PlayerAnimation : MonoBehaviour
         OnMove();
         OnRun();
     }
-
-
 
     #region Movement
     void OnMove()
@@ -64,7 +64,6 @@ public class PlayerAnimation : MonoBehaviour
             anim.SetInteger("transition", 5);
         }
     }
-
     void OnRun()
     {
         if (player.isRunning)
@@ -72,6 +71,22 @@ public class PlayerAnimation : MonoBehaviour
             anim.SetInteger("transition", 2);
         }
     }
-    
+
+
+
+
+
+
     #endregion
+    public void OnCastingStarted()
+    {
+        anim.SetTrigger("isCasting");
+        player.isPaused = true;
+    }
+
+    public void OnCastingEnded()
+    {
+        fishing.OnFishing();
+        player.isPaused = false;
+    }
 }

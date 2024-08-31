@@ -7,7 +7,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed = 3;
-
+    
+    public bool isPaused;
+    
     private Rigidbody2D rig;
     private PlayerItens playerItens;
 
@@ -57,7 +59,6 @@ public class Player : MonoBehaviour
         set { _isWatering = value; }
     }
 
-
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -66,34 +67,39 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if(!isPaused)
         {
-            handlingObj = 0;
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                handlingObj = 0;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                handlingObj = 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                handlingObj = 2;
+            }
+
+            OnInput();
+            OnRun();
+            OnRolling();
+            OnCutting();
+            OnDigging();
+            OnWatering();
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            handlingObj = 1;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            handlingObj = 2;
-        }
-
-        OnInput();
-        OnRun();
-        OnRolling();
-        OnCutting();
-        OnDigging();
-        OnWatering();
-
     }
 
     private void FixedUpdate()
     {
-        OnMove();
+        if (!isPaused)
+        {
+            OnMove();
+        }
+        
     }
 
     #region Movement
