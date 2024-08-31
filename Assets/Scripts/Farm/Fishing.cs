@@ -22,7 +22,7 @@ public class Fishing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (detectingPlayer && Input.GetKeyDown(KeyCode.F))
+        if (detectingPlayer && Input.GetKeyDown(KeyCode.E))
         {
             playerAnimation.OnCastingStarted();
         }
